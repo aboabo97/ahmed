@@ -19,19 +19,19 @@ export class EventDetails {
   async loadEvent(id: number): Promise<void> {
     try {
       this.showLoading();
-      
+
       // Fetch event data
       this.event = await fetchEventById(id);
-      
+
       if (!this.event) {
-        this.showError('Event not found');
+        this.showError('Event not found. Please check the event ID or return to the events list.');
         return;
       }
-      
+
       this.renderEvent();
     } catch (error) {
       console.error('Error loading event:', error);
-      this.showError('Failed to load event details');
+      this.showError('Failed to load event details. Please try again later.');
     }
   }
   
